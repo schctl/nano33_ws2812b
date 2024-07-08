@@ -3,5 +3,17 @@ name = "nano33_baremetal"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "nano33_baremetal"
+test = false
+bench = false
+
 [dependencies]
 cortex-m-rt = "0.7"
+cortex-m = "0.7"
+nrf52840-pac = "0.12"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
