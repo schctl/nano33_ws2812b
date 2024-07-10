@@ -9,9 +9,15 @@ test = false
 bench = false
 
 [dependencies]
-cortex-m-rt = "0.7"
 cortex-m = "0.7"
-nrf52840-pac = "0.12"
+cortex-m-rt = "0.7"
+
+nrf52840-pac = { version = "0.12", optional = true }
+
+[features]
+nrf52840 = ["nrf52840-pac/rt"]
+
+# ---
 
 [profile.release]
 opt-level = 3
