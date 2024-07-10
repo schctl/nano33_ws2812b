@@ -4,7 +4,7 @@ This repo contains some code testing bare metal programming on the [Arduino Nano
 
 ## Requirements
 
-- Rust Toolchain, _`thumbv7em-none-eabi`_
+- Rust Toolchain
 - [cargo-binutils](<https://github.com/rust-embedded/cargo-binutils>)
 - [arduino/BOSSA](<https://github.com/arduino/BOSSA>)
 - [just](<https://github.com/casey/just>) build and upload recipes.
