@@ -15,6 +15,7 @@ pub struct Rgb {
 }
 
 impl Rgb {
+    pub const ZERO: Self = Self { r: 0, g: 0, b: 0 };
     pub const H_RED: Self = Self { r: 127, g: 0, b: 0 };
     pub const H_GREEN: Self = Self { r: 0, g: 127, b: 0 };
     pub const H_BLUE: Self = Self { r: 0, g: 0, b: 127 };

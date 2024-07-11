@@ -31,17 +31,14 @@ fn main() -> ! {
 
     setup_hf_clock(&mcu_pphl.CLOCK);
 
-    let mut delay_provder = cortex_m::delay::Delay::new(cpu_pphl.SYST, 64_000_000);
+    let mut delay_provider = cortex_m::delay::Delay::new(cpu_pphl.SYST, 64_000_000);
 
-    let ws2812b = driver::gpio::Driver::new(0, 23);
-    ws2812b.configure_gpio(&mcu_pphl);
-    ws2812b.configure_timer(&mcu_pphl);
+    let ws2812b = driver::gpio::Driver::new(0, 23, &mcu_pphl);
 
-    let mut leds = [Rgb::H_RED, Rgb::H_GREEN, Rgb::H_BLUE];
+    let leds = [Rgb::H_RED, Rgb::ZERO, Rgb::H_BLUE];
 
     loop {
-        ws2812b.write(&mcu_pphl, leds.into_iter());
-        leds.rotate_right(1);
-        delay_provder.delay_ms(500);
+        ws2812b.write(leds.into_iter(), &mut delay_provider);
+        delay_provider.delay_ms(500);
     }
 }
