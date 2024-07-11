@@ -2,7 +2,7 @@ pub mod gpio;
 
 #[repr(u8)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum Bit {
+pub enum Bit {
     Low = 0,
     High = 1,
 }

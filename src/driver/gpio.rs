@@ -94,7 +94,7 @@ impl Driver {
             w
         });
 
-        timer.shorts.write(|w| w.compare1_clear().set_bit());
+        timer.tasks_start.write(|w| unsafe { w.bits(1) });
     }
 
     #[inline]
@@ -107,12 +107,13 @@ impl Driver {
         };
 
         unsafe {
-            *gpio_out = (*gpio_out) ^ ((bit as u8 as u32) << self.gpio_pin);
+            *gpio_out = (*gpio_out) & !(1 << self.gpio_pin) | ((bit as u32) << self.gpio_pin);
         }
     }
 
     #[inline]
     fn write_bit(&self, pphl: &Peripherals, bit: Bit) {
+        /*
         let timer = &pphl.TIMER0;
 
         set_bit_ccr(timer, bit);
@@ -123,6 +124,9 @@ impl Driver {
 
         self.write_gpio(pphl, Bit::Low);
         timer_wait(timer, 1);
+        */
+
+        self.write_gpio(pphl, Bit::High);
     }
 
     #[inline]
