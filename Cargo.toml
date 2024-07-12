@@ -1,21 +1,18 @@
+[workspace]
+members = ["examples/nano33demo"]
+
 [package]
-name = "nano33_baremetal"
+name = "nrf5x_ws2812b"
 version = "0.1.0"
 edition = "2021"
 
-[[bin]]
-name = "nano33_baremetal"
-test = false
-bench = false
-
 [dependencies]
 cortex-m = "0.7"
-cortex-m-rt = "0.7"
 
 nrf52840-pac = { version = "0.12", optional = true }
 
 [features]
-nrf52840 = ["nrf52840-pac/rt"]
+nrf52840 = ["nrf52840-pac"]
 
 # ---
 

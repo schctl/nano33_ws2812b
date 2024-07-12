@@ -5,8 +5,8 @@ use core::mem::transmute;
 
 use cortex_m::delay::Delay;
 
-use super::{Bit, Rgb};
 use crate::device::Peripherals;
+use crate::{Bit, Rgb};
 
 pub struct Driver {
     gpio_port: u8,

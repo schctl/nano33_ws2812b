@@ -1,0 +1,13 @@
+[package]
+name = "nano33demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nrf5x_ws2812b = { path = "../../", features = ["nrf52840"] }
+
+cortex-m = "0.7"
+cortex-m-rt = { version = "0.7", features = ["device"] }
+
+nrf52840-pac = { version = "0.12", features = ["rt"] }
+panic-halt = "0.2.0"

@@ -1,3 +1,6 @@
+#![no_std]
+
+pub mod device;
 pub mod gpio;
 
 #[repr(u8)]
