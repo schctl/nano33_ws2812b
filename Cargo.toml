@@ -8,6 +8,7 @@ edition = "2021"
 
 [dependencies]
 cortex-m = "0.7"
+volatile = "0.6"
 
 nrf52840-pac = { version = "0.12", optional = true }
 

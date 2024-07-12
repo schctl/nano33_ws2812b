@@ -37,3 +37,8 @@ impl From<[u8; 3]> for Rgb {
         }
     }
 }
+
+pub struct Configuration {
+    pub gpio_port: device::GpioPort,
+    pub gpio_pin: u8,
+}
