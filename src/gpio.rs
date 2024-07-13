@@ -1,4 +1,4 @@
-//! Driver implemented using GPIO pins and TIMER0.
+//! Driver implemented using GPIO pins and bit-banging.
 
 use core::arch::asm;
 use core::mem::transmute;
@@ -29,7 +29,7 @@ impl Driver {
     }
 
     #[inline]
-    pub fn write_gpio(&self, bit: Bit) {
+    fn write_gpio(&self, bit: Bit) {
         self.gpio_out
             .update(|b| b & !(1 << self.gpio_pin) | ((bit as u32) << self.gpio_pin))
     }

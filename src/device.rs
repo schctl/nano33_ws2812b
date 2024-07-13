@@ -1,3 +1,5 @@
+//! Re-exports the target device PAC.
+
 use core::ptr::NonNull;
 
 #[cfg(feature = "nrf52840")]

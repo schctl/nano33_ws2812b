@@ -21,18 +21,19 @@ fn main() -> ! {
 
     let mut delay_provider = cortex_m::delay::Delay::new(cpu_pphl.SYST, 64_000_000);
 
-    let ws2812b = driver::gpio::Driver::new(
+    let ws2812b = driver::spi::Driver::new(
         Configuration {
             gpio_port: device::GpioPort::P0,
             gpio_pin: 23,
+            ..Default::default()
         },
         &mcu_pphl,
     );
 
-    let leds = [Rgb::H_RED, Rgb::ZERO, Rgb::H_GREEN];
+    let leds = [Rgb::H_BLUE, Rgb::ZERO, Rgb::H_GREEN];
 
     loop {
-        ws2812b.write(leds.into_iter(), &mut delay_provider);
+        ws2812b.begin_transaction(&leds).drive();
         delay_provider.delay_ms(500);
     }
 }
